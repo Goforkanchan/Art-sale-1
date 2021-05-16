@@ -14,7 +14,7 @@ export default class MyBids extends Component {
         // this.myFunction=this.myFunction.bind(this)
 
         console.log(this.state.user_id)
-        const url = "http://localhost:8090/paintings/getAllBiddings/"+this.state.user_id;
+        const url = "http://localhost:8099/paintings/getAllBiddings/"+this.state.user_id;
         
         axios.get(url,{
             headers: {'Content-Type': 'application/json'}

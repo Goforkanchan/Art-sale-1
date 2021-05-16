@@ -11,7 +11,7 @@ class CustomRequestsArtist extends Component {
             requests: []
         }
 
-        axios.get("http://localhost:8090/dashNavigationMenu/getAllCustOrders").then(res=>{
+        axios.get("http://localhost:8099/dashNavigationMenu/getAllCustOrders").then(res=>{
             console.log(res.data);
             console.log(res.status)
             this.setState({

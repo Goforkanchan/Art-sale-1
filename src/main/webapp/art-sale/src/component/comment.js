@@ -47,7 +47,7 @@ class comment extends Component {
             }
     
             console.log(JSON.stringify(comment));
-            axios.post("http://localhost:8090/artistComments/saveCommentsByArtist",JSON.stringify(comment),{
+            axios.post("http://localhost:8099/artistComments/saveCommentsByArtist",JSON.stringify(comment),{
                 headers: {'Content-Type': 'application/json'}
             })
             .then(res=>{

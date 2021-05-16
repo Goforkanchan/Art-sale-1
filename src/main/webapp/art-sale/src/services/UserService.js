@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const USER_API_BASE_URL="http://localhost:8090/"
+const USER_API_BASE_URL="http://localhost:8099"
 // axios.defaults.baseURL = "http://localhost:8090"
 class UserService{
 
@@ -20,20 +20,20 @@ class UserService{
     createUser(user)
     {
         console.log(user);
-        return axios.post('/addUser/userDetails',user,{headers:{
+        return axios.post(USER_API_BASE_URL+'/addUser/userDetails',user,{headers:{
             headers: {'Content-Type': 'application/json'}
         }});
     }
 
     saveImage(artist){
-        return axios.post("/addUser/saveArtistSampleImage",artist,
+        return axios.post(USER_API_BASE_URL+"/addUser/saveArtistSampleImage",artist,
             {headers: {
                     'content-type': 'multipart/form-data'
                 }});
     }
 
     saveReferenceImage(image){
-        return axios.post("/dashNavigationMenu/getArtCustmizedSampleImage",image,
+        return axios.post(USER_API_BASE_URL+"/dashNavigationMenu/getArtCustmizedSampleImage",image,
             {headers: {
                     'content-type': 'multipart/form-data'
                 }}
@@ -41,12 +41,12 @@ class UserService{
     }
 
     requestCustomArt(request){
-        return axios.post("/dashNavigationMenu/getArtCustomized",request);
+        return axios.post(USER_API_BASE_URL+"/dashNavigationMenu/getArtCustomized",request);
     }
 
     viewProfile(email)
     {
-        let URL = "/dashNavigationMenu/getMyProfile/" + email;
+        let URL = USER_API_BASE_URL+"/dashNavigationMenu/getMyProfile/" + email;
         console.log(URL);
         return axios.get(URL);
     }

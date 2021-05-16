@@ -100,7 +100,7 @@ class SignUp extends Component {
         return (
             <div className="inner">
                 {/* <Navbar/> */}
-                <form onSubmit={this.saveUser}>
+                <form >
                     <h3>Register</h3>
                     <div className="form-group">
                         <label className="firstLabel">Do you want a Artist account?  </label>
@@ -269,8 +269,8 @@ class SignUp extends Component {
 
                     <button 
                             className="btn btn-dark btn-lg btn-block"
-                            // onClick={this.saveUser}
-                            // type="submit"
+                            onClick={this.saveUser}
+                            type="submit"
                     >Register</button>
                     <p className="forgot-password text-right">
                         Already registered <a href="#">log in?</a>

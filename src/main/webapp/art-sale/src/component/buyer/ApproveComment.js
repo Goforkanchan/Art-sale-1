@@ -23,7 +23,7 @@ export default class ApproveComment extends Component {
         }
 
         console.log(JSON.stringify(approve));
-        axios.post("http://localhost:8090/artistComments/approveCustRequestStatusTrial",JSON.stringify(approve),{
+        axios.post("http://localhost:8099/artistComments/approveCustRequestStatusTrial",JSON.stringify(approve),{
             headers: {'Content-Type': 'application/json'}
         })
         .then(res=>{

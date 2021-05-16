@@ -25,7 +25,7 @@ export default class ViewComments extends Component {
     }
 
     async componentDidMount() {
-        await axios.get("http://localhost:8090/artistComments/getCommentsByCustomID/"+this.state.details.custom_id)
+        await axios.get("http://localhost:8099/artistComments/getCommentsByCustomID/"+this.state.details.custom_id)
         .then(res=>{
             console.log(res.data);
             if(res.data.length == 0)

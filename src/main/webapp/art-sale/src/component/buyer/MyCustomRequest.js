@@ -13,7 +13,7 @@ class MyCustomRequest extends Component {
 
         console.log(this.state.user_id)
 
-        axios.get("http://localhost:8090/dashNavigationMenu/getAllCustomizedOrdersUser/"+this.state.user_id).then(res=>{
+        axios.get("http://localhost:8099/dashNavigationMenu/getAllCustomizedOrdersUser/"+this.state.user_id).then(res=>{
             console.log(res.data);
             console.log(res.status)
             this.setState({
