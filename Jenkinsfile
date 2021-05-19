@@ -25,8 +25,8 @@ pipeline {
     stage('Build Docker Images'){
         steps{
             script{
-                dockerImageName1 = docker.build "kanchanmahajan67/spe_backend_springboot_wofrontend:latest"
-                dockerImageName2 = docker.build("kanchanmahajan67/spe_frontend_react_backwofront:latest", "src/main/webapp/art-sale/")
+                dockerImageName1 = docker.build "kanchanmahajan67/final_spring:latest"
+                dockerImageName2 = docker.build("kanchanmahajan67/final_react:latest", "src/main/webapp/art-sale/")
             }
         }
     }
@@ -43,7 +43,15 @@ pipeline {
             }
         }
  
-    }    
+    stage('Execute rundeck Job'){
+        steps{
+            script{
+                build 'ArtSale-rundeck'
+            }
+        }
+        
+    }   
+
 
    
      
