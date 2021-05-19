@@ -1,0 +1,40 @@
+- defaultTab: nodes
+  description: Pull docker images from dockerhub
+  executionEnabled: true
+  id: 99d4375f-8311-42e6-b64d-a2ef3da188a3
+  loglevel: INFO
+  name: Pull docker images
+  nodeFilterEditable: false
+  plugins:
+    ExecutionLifecycle: null
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - description: Stop and delete all the previous running docker images.
+      exec: docker stop $(docker ps -a -q) || true && docker rm $(docker ps -a -q)
+        || true
+    - description: Pulling mysql docker image.
+      exec: docker pull mysql:8.0.20
+    - description: Pulling frontend image.
+      exec: docker pull kanchanmahajan67/final_react:latest
+    - description: Pulling springboot image.
+      exec: docker pull kanchanmahajan67/final_spring:latest
+    - description: Removing previously created netowrk.
+      exec: docker network rm artsale || true
+    - description: Creating network for images to communicate.
+      exec: docker network create artsale
+    - description: Running sql docker.
+      exec: docker container run --network artsale -d -p 8091:3306 -e MYSQL_ROOT_PASSWORD=GOforkanchu@67!
+        -e MYSQL_DATABASE=art_spe3 -e MYSQL_USER=artSalePortal -e MYSQL_PASSWORD=artSalePortal16!
+        --name artSale-mysql mysql:8.0.20
+    - description: Sleeping before spring container runs.
+      exec: sleep 230
+    - description: Running springboot container.
+      exec: docker run --network artsale -e DATABASE_HOST=artSale-mysql -d --name
+        artSale-spring -p 8099:8099 kanchanmahajan67/final_spring
+    - description: Running react docker.
+      exec: ' docker run -itd --network artsale -e DATABASE_HOST=artSale-spring --name=artSale-react
+        -p 3000:3000 kanchanmahajan67/final_react'
+    keepgoing: false
+    strategy: node-first
+  uuid: 99d4375f-8311-42e6-b64d-a2ef3da188a3
